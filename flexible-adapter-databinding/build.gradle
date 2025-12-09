@@ -24,6 +24,7 @@ ext {
 }
 
 android {
+    namespace "eu.davidea.flexibleadapter.databinding"
     compileSdkVersion targetSdk
 
     defaultConfig {

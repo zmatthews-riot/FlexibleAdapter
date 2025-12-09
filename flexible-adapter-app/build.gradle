@@ -9,6 +9,7 @@ versioning {
 }
 
 android {
+    namespace "eu.davidea.samples.flexibleadapter"
     compileSdkVersion targetSdk
 
     defaultConfig {
