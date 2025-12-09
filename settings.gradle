@@ -1,3 +1,9 @@
+pluginManagement {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+}
+
 include ':flexible-adapter',
         ':flexible-adapter-app',
         ':flexible-adapter-databinding',
