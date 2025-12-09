@@ -24,6 +24,7 @@ ext {
 android {
     namespace "eu.davidea.flexibleadapter"
     compileSdkVersion targetSdk
+    buildFeatures.buildConfig true
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_19
