@@ -53,11 +53,11 @@ android {
             includeAndroidResources = true
         }
     }
-    lintOptions {
-        abortOnError false
-    }
     dataBinding {
         enabled = true
+    }
+    lint {
+        abortOnError false
     }
 }
 

@@ -7,7 +7,7 @@ versioning {
     minor 0
     patch 0
     //preRelease "b4"
-    dependsOn "install"
+    saveOn "install"
 }
 // For maven repository
 version = versioning.name
@@ -29,8 +29,6 @@ android {
     defaultConfig {
         minSdkVersion minSdk
         targetSdkVersion targetSdk
-        versionCode versioning.code
-        versionName versioning.name
     }
     buildTypes {
         release {
@@ -60,7 +58,7 @@ afterEvaluate {
         publications {
             // Creates a Maven publication called "release".
             release(MavenPublication) {
-                from components.release
+                from components.findByName("release")
                 groupId = 'eu.davidea'
                 artifactId = 'flexible-adapter-databinding'
                 version = '1.0.0'
