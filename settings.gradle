@@ -5,7 +5,6 @@ pluginManagement {
 }
 
 include ':flexible-adapter',
-        ':flexible-adapter-app',
         ':flexible-adapter-databinding',
         ':flexible-adapter-ui',
         ':flexible-adapter-livedata'
