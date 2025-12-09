@@ -92,6 +92,16 @@ allprojects {
         maven { url "https://jitpack.io" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
+
+    afterEvaluate { project ->
+        if (project.extensions.findByType(JavaPluginExtension)) {
+            project.java {
+                toolchain {
+                    languageVersion = JavaLanguageVersion.of(17)
+                }
+            }
+        }
+    }
 }
 
 buildscript {

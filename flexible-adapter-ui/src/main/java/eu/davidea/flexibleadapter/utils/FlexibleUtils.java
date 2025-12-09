@@ -50,7 +50,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StyleRes;
 import eu.davidea.flexibleadapter.SelectableAdapter;
-import eu.davidea.flexibleadapter.helpers.R;
 
 /**
  * Set of utility methods most used in all applications.
@@ -359,7 +358,7 @@ public final class FlexibleUtils {
      */
     public static int fetchAccentColor(Context context, @ColorInt int defColor) {
         if (colorAccent == INVALID_COLOR) {
-            int attr = R.attr.colorAccent;
+            int attr = android.R.attr.colorAccent;
             if (hasLollipop()) attr = android.R.attr.colorAccent;
             TypedArray androidAttr = context.getTheme().obtainStyledAttributes(new int[]{attr});
             colorAccent = androidAttr.getColor(0, defColor);

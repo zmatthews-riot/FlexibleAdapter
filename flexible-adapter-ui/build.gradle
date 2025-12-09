@@ -24,12 +24,12 @@ ext {
 }
 
 android {
-    namespace "eu.davidea.flexibleadapter.ui"
-    compileSdkVersion targetSdk
+    namespace "eu.davidea.flexibleadapter.helpers"
+    compileSdkVersion rootProject.ext.targetSdk
 
     defaultConfig {
-        minSdkVersion minSdk
-        targetSdkVersion targetSdk
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
     }
     buildTypes {
         release {

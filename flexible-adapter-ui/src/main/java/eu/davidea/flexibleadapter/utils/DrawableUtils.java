@@ -33,8 +33,6 @@ import android.view.View;
 
 import java.util.Arrays;
 
-import eu.davidea.flexibleadapter.helpers.R;
-
 /**
  * @author Davide Steduto
  * @see FlexibleUtils
@@ -130,7 +128,7 @@ public final class DrawableUtils {
     public static Drawable getSelectableItemBackground(Context context) {
         TypedValue outValue = new TypedValue();
         // It's important to not use the android.R because this wouldn't add the overridden drawable
-        context.getTheme().resolveAttribute(R.attr.selectableItemBackground, outValue, true);
+        context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
         return getDrawableCompat(context, outValue.resourceId);
     }
 
@@ -146,7 +144,7 @@ public final class DrawableUtils {
     public static int getColorControlHighlight(Context context) {
         TypedValue outValue = new TypedValue();
         // It's important to not use the android.R because this wouldn't add the overridden drawable
-        context.getTheme().resolveAttribute(R.attr.colorControlHighlight, outValue, true);
+        context.getTheme().resolveAttribute(android.R.attr.colorControlHighlight, outValue, true);
         if (FlexibleUtils.hasMarshmallow()) {
             return context.getColor(outValue.resourceId);
         } else {
