@@ -15,7 +15,7 @@ allprojects {
 
         // SDK and Build tools version
         minSdk = 14
-        targetSdk = 30 // Android 11
+        targetSdk = 35
 
         // AndroidX
         browserVer = '1.3.0'
