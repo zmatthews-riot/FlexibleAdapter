@@ -104,7 +104,6 @@ buildscript {
 
     ext {
         gradle_plugin_version = '8.13.1'
-        android_apt_version = '1.8'
         maven_gradle_plugin_version = '2.1'
         android_junit5_version = '1.7.1.1'
         grabver_version = '2.0.3'
@@ -112,7 +111,6 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_plugin_version"
-        classpath "com.neenbedankt.gradle.plugins:android-apt:$android_apt_version"
         classpath "com.github.dcendents:android-maven-gradle-plugin:$maven_gradle_plugin_version"
         classpath "de.mannodermaus.gradle.plugins:android-junit5:$android_junit5_version"
         classpath "eu.davidea:grabver:$grabver_version"

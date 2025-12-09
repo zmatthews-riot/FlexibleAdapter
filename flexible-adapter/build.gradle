@@ -24,6 +24,11 @@ ext {
 android {
     compileSdkVersion targetSdk
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_19
+        targetCompatibility JavaVersion.VERSION_19
+    }
+
     defaultConfig {
         minSdkVersion minSdk
         targetSdkVersion targetSdk
