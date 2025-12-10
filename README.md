@@ -1,13 +1,7 @@
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlexibleAdapter-green.svg?style=flat)](http://android-arsenal.com/details/1/2207)
-[![Download](https://api.bintray.com/packages/davideas/maven/flexible-adapter/images/download.svg)](https://bintray.com/davideas/maven/flexible-adapter/_latestVersion)
-[![API](https://img.shields.io/badge/API-14%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=14)
 [![Licence](https://img.shields.io/badge/Licence-Apache2-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-![Methods and Size](https://img.shields.io/badge/Methods%20and%20size-Core:%20759,%20124%20KB%20|%20UI:%20267,%2068%20KB-e91e63.svg)
 
 # FlexibleAdapter
-- [v5.1.0](https://github.com/davideas/FlexibleAdapter/releases/tag/5.1.0) built on 2018.09.30 with AndroidX
-- If you come from previous versions, update your code following the Wiki page [Migrations](https://github.com/davideas/FlexibleAdapter/wiki/Migrations).
-- Please read also [issues](https://github.com/davideas/FlexibleAdapter/issues) and [releases](https://github.com/davideas/FlexibleAdapter/releases).
+This repository is adapted from the original FlexibleAdapter repository to allow the project to be built and published on JitPack. This repository is only intended to facilitate usage of v5.1.0 of the official FlexibleAdapter on apps that already depend on FlexibleAdapter.
 
 ### One Adapter many Apps
 > :mega: When initially Android:registered: team introduced the RecyclerView widget, we had to implement a custom Adapter in several applications, again and again to provide the items for our views.<br/>
@@ -57,32 +51,21 @@ This library is configurable and it guides the developers to create a better use
 #### build.gradle
 ```
 repositories {
-    jcenter()
+    maven { url = uri("https://jitpack.io") }
 }
 ```
 ```
 dependencies {
     // Using JCenter
-    implementation 'eu.davidea:flexible-adapter:5.1.0'
-    implementation 'eu.davidea:flexible-adapter-ui:1.0.0'
-    implementation 'eu.davidea:flexible-adapter-livedata:1.0.0-b3'
-    // From 1.0.0-b3, library is compiled with data binding v2
-    implementation 'eu.davidea:flexible-adapter-databinding:1.0.0'
+    implementation 'com.github.zmatthews:flexible-adapter:5.1.2'
+    implementation 'com.github.zmatthews:flexible-adapter-ui:5.1.2'
+    implementation 'com.github.zmatthews:flexible-adapter-livedata:5.1.2'
+    implementation 'com.github.zmatthews:flexible-adapter-databinding:5.1.2'
 }
 ```
-#### Stay Updated
-|Flexible Adapter|UI|Live Data|Data Binding|
-|---|---|---|---|
-|<div align="center">5.1.0</div>|<div align="center">1.0.0</div>|<div align="center">1.0.0-b3</div>|<div align="center">1.0.0</div>|
-|<a href='https://bintray.com/davideas/maven/flexible-adapter?source=watch' alt='Get automatic notifications about new "flexible-adapter" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_color.png'></a>|<a href='https://bintray.com/davideas/maven/flexible-adapter-ui?source=watch' alt='Get automatic notifications about new "flexible-adapter-ui" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_bw.png'></a>|<a href='https://bintray.com/davideas/maven/flexible-adapter-livedata?source=watch' alt='Get automatic notifications about new "flexible-adapter-livedata" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_bw.png'></a>|<a href='https://bintray.com/davideas/maven/flexible-adapter-databinding?source=watch' alt='Get automatic notifications about new "flexible-adapter-databinding" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_bw.png'></a>|
-
-# Wiki!
-I strongly recommend to read the **[Wiki](https://github.com/davideas/FlexibleAdapter/wiki) pages**, where you can find a comprehensive Tutorial.<br/>
 
 ### Pull requests / Issues / Improvement requests
-Feel free to contribute and ask!<br/>
-Active discussions:
-- [The next steps of development: New demoApp > Extensions](https://github.com/davideas/FlexibleAdapter/issues/361).
+Any pull request with new features or improvements will be rejected. Only pull requests that fix build issues or compatibility issues with newer versions of Android will be accepted. If you need to extend the library, feel free to fork this repo or the official repo.
 
 ### Under the hood
 Some simple features have been implemented, thanks to some Blogs (see at the bottom of the page), merged and methods have been improved for speed and scalability.
@@ -94,42 +77,6 @@ Some simple features have been implemented, thanks to some Blogs (see at the bot
 * At front level, the core class `FlexibleAdapter`. It holds and handles the main list, performs actions on all different types of item paying attention at the adding and removal of the items, as well as the new concept of "selection coherence".
 * Useful extensions and helpers have been added during the time to simplify the development.
 * Item interfaces and predefined ViewHolders complete the whole library giving more actions to the items and configuration options to developers.
-
-# Showcase of the demo App
-You can [download](https://github.com/davideas/FlexibleAdapter/releases) the latest demo App from the latest release page OR run it with the emulator.<br>
-This [Wiki page](https://github.com/davideas/FlexibleAdapter/wiki/5.x-%7C-Demo-App) will give you a short briefing of the demo App.
-
-![Overall](/screenshots/demo20_overall.png)
-![Adapter Animations](/screenshots/demo20_adapter_animations.png)
-![Undo](/screenshots/demo20_undo_single_selection.png)
-![Staggered Layout](/screenshots/demo20_dynamic_staggered_layout.png)
-
-![Endless](/screenshots/demo20_endless.png)
-![Instagram](/screenshots/demo20_instagram.png)
-![Expandables](/screenshots/demo20_expandables.png)
-![Multi Selection & SC](/screenshots/demo20_selection_coherence.png)
-
-![Drag & Drop](/screenshots/demo20_drag_linear.png)
-![swipe-to-dismiss1](/screenshots/demo20_swipe-to-dismiss1.png)
-![swipe-to-dismiss2](/screenshots/demo20_swipe-to-dismiss2.png)
-![ViewPager](/screenshots/demo20_view_pager.png)
-
-![Async Filter](/screenshots/demo20_async_filter.png)
-![Search Filter](/screenshots/demo20_search_filter.png)
-![Search Sections](/screenshots/demo20_search_sections.png)
-
-# Change Log
-###### Latest release
-[v5.1.0](https://github.com/davideas/FlexibleAdapter/releases/tag/5.1.0) - 2018.09.30
-
-###### Old releases
-[v5.0.6](https://github.com/davideas/FlexibleAdapter/releases/tag/5.0.6) - 2018.09.16 |
-[v5.0.5](https://github.com/davideas/FlexibleAdapter/releases/tag/5.0.5) - 2018.06.03 |
-[v5.0.4](https://github.com/davideas/FlexibleAdapter/releases/tag/5.0.4) - 2018.05.01 |
-[v5.0.3](https://github.com/davideas/FlexibleAdapter/releases/tag/5.0.3) - 2018.03.23 |
-[v5.0.2](https://github.com/davideas/FlexibleAdapter/releases/tag/5.0.2) - 2018.03.17 |
-[v5.0.1](https://github.com/davideas/FlexibleAdapter/releases/tag/5.0.1) - 2018.03.11 |
-[v5.0.0](https://github.com/davideas/FlexibleAdapter/releases/tag/5.0.0) - 2018.03.04
 
 # Limitations
 Item half swipe cannot be implemented due to how the `android.support.v7.widget.helper.ItemTouchHelper` is done, also clicks on rear view are not possible, same reason.
