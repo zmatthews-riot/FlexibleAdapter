@@ -1,21 +1,10 @@
-apply plugin: 'com.android.library'
-apply plugin: 'de.mannodermaus.android-junit5'
-apply plugin: 'eu.davidea.grabver'
-
-versioning {
-    major = 1
-    minor = 0
-    patch = 0
-    //preRelease "b3"
-}
-// For maven repository
-version = versioning.name
+apply plugin: "com.android.library"
+apply plugin: "de.mannodermaus.android-junit5"
 
 ext {
-    // Library Settings
     libraryName = "FlexibleAdapter LiveData extension"
     libraryDescription = "LiveData extension for FlexibleAdapter project"
-    libraryLabels = ['android', 'flexibleadapter', 'adapter', 'livedata', 'lifecycle', 'viewmodel', 'androidarch']
+    libraryLabels = ["android", "flexibleadapter", "adapter", "livedata", "lifecycle", "viewmodel", "androidarch"]
 
     publishedGroupId = "eu.davidea"
     artifact = "flexible-adapter-livedata"
@@ -29,21 +18,20 @@ android {
         minSdkVersion rootProject.ext.minSdk
         targetSdkVersion rootProject.ext.targetSdk
     }
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
-    compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
-        sourceCompatibility JavaVersion.VERSION_1_8
-    }
+
     testOptions {
-        /* Android-junit5 - https://github.com/mannodermaus/android-junit5/wiki/Migrating-from-1.0.x */
-        junitPlatform {
-           // options
-        }
+        junitPlatform {}
+    }
+
+    publishing {
+        singleVariant("release")
     }
 }
 
@@ -54,9 +42,9 @@ dependencies {
 
     // Test libraries
     androidTestImplementation androidx.annotation
-    androidTestImplementation 'androidx.test:runner:1.3.0'
-    androidTestImplementation 'androidx.test:rules:1.3.0'
-    androidTestImplementation('androidx.arch.core:core-testing:2.0.0', {
+    androidTestImplementation "androidx.test:runner:1.3.0"
+    androidTestImplementation "androidx.test:rules:1.3.0"
+    androidTestImplementation("androidx.arch.core:core-testing:2.0.0", {
     })
 
     // (Required) Writing and executing Unit Tests on the JUnit Platform
@@ -65,17 +53,4 @@ dependencies {
 
     testImplementation androidx.recyclerView
     testImplementation project(":flexible-adapter")
-}
-
-publishing {
-    publications {
-        release(MavenPublication) {
-            artifactId = 'flexible-adapter-livedata'
-            version = '1.0.0'
-
-            afterEvaluate {
-                from components.findByName('release')
-            }
-        }
-    }
 }

@@ -1,32 +1,12 @@
-apply plugin: 'com.android.library'
-apply plugin: 'eu.davidea.grabver'
-
-versioning {
-    major = 5
-    minor = 1
-    patch = 0
-    //preRelease = 'SNAPSHOT'
-    saveOn = 'install'
-}
-// For maven repository
-version = versioning.name
+apply plugin: "com.android.library"
 
 ext {
-    // Library Settings
     libraryName = "FlexibleAdapter"
     libraryDescription = "Fast and versatile Adapter for RecyclerView which regroups several features into one library to considerably improve the user experience :-)"
-    libraryLabels = ['android', 'recyclerview', 'list', 'adapter', 'selection', 'multi-select', 'actionmode', 'undo', 'viewholder', 'ripple', 'search', 'filter', 'filtering', 'async', 'asynchronous', 'item', 'item animator', 'itemanimator', 'animator', 'animation', 'expand', 'expandable', 'collapse', 'collapsible', 'section', 'sections', 'sticky', 'header', 'headers', 'category', 'footer', 'footers', 'drag', 'draggable', 'swipe', 'swipeable', 'leave behind', 'fastscroll', 'fastscroller', 'endless', 'endless scroll', 'load more']
+    libraryLabels = ["android", "recyclerview", "list", "adapter", "selection", "multi-select", "actionmode", "undo", "viewholder", "ripple", "search", "filter", "filtering", "async", "asynchronous", "item", "item animator", "itemanimator", "animator", "animation", "expand", "expandable", "collapse", "collapsible", "section", "sections", "sticky", "header", "headers", "category", "footer", "footers", "drag", "draggable", "swipe", "swipeable", "leave behind", "fastscroll", "fastscroller", "endless", "endless scroll", "load more"]
+
     publishedGroupId = "eu.davidea"
     artifact = "flexible-adapter"
-    packageExt = "aar"
-    siteUrl = 'https://github.com/davideas/FlexibleAdapter'
-    gitUrl = 'https://github.com/davideas/FlexibleAdapter.git'
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    licenseDist = 'repo'
-    developerId = 'davideas'
-    developerName = 'Davide Steduto'
-    developerEmail = 'davide.steduto@gmail.com'
 }
 
 android {
@@ -45,7 +25,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
     lint {
@@ -53,24 +33,10 @@ android {
     }
 
     publishing {
-        singleVariant("release") {}
+        singleVariant("release")
     }
 }
 
 dependencies {
     implementation androidx.recyclerView
-}
-
-publishing {
-    publications {
-        // Creates a Maven publication called "release".
-        release(MavenPublication) {
-            artifactId = 'flexible-adapter'
-            version = '5.1.0'
-
-            afterEvaluate {
-                from components.findByName('release')
-            }
-        }
-    }
 }

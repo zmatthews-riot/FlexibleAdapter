@@ -1,5 +1,5 @@
 allprojects {
-    apply plugin: 'maven-publish'
+    apply plugin: "maven-publish"
 
     // Top-level build file where you can add configuration options common to all sub-projects/modules.
     ext {
@@ -19,12 +19,12 @@ allprojects {
         targetSdk = 35
 
         // AndroidX
-        browserVer = '1.3.0'
-        appCompatVer = '1.2.0'
-        cardviewVer = '1.0.0'
-        annotationVer = '1.1.0'
-        vectorDrawableVer = '1.1.0'
-        recyclerViewVer = '1.1.0'
+        browserVer = "1.3.0"
+        appCompatVer = "1.2.0"
+        cardviewVer = "1.0.0"
+        annotationVer = "1.1.0"
+        vectorDrawableVer = "1.1.0"
+        recyclerViewVer = "1.1.0"
         lifecycleVer = "2.3.0"
         constraintVer = "2.0.4"
         coreVer = "1.3.2"
@@ -109,9 +109,11 @@ allprojects {
 }
 
 subprojects {
-    tasks.register('sourcesJar', Jar) {
-        archiveClassifier = 'sources'
-        if (project.plugins.hasPlugin('com.android.library')) {
+    project.version = "5.1.2"
+
+    tasks.register("sourcesJar", Jar) {
+        archiveClassifier = "sources"
+        if (project.plugins.hasPlugin("com.android.library")) {
             from android.sourceSets.main.java.srcDirs
         } else {
             from sourceSets.main.java.srcDirs
@@ -125,6 +127,10 @@ subprojects {
                     groupId = project.publishedGroupId
                     artifactId = project.artifact
                     version = project.version
+
+                    afterEvaluate {
+                        from it.components.findByName("release")
+                    }
 
                     artifact sourcesJar
 
@@ -171,16 +177,14 @@ buildscript {
     }
 
     ext {
-        gradle_plugin_version = '8.13.1'
-        maven_gradle_plugin_version = '2.1'
-        android_junit5_version = '1.7.1.1'
-        grabver_version = '2.0.3'
+        gradle_plugin_version = "8.13.1"
+        maven_gradle_plugin_version = "2.1"
+        android_junit5_version = "1.7.1.1"
     }
 
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_plugin_version"
         classpath "de.mannodermaus.gradle.plugins:android-junit5:$android_junit5_version"
-        classpath "eu.davidea:grabver:$grabver_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
