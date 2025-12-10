@@ -1,4 +1,6 @@
 allprojects {
+    apply plugin: 'maven-publish'
+
     // Top-level build file where you can add configuration options common to all sub-projects/modules.
     ext {
         // Author
@@ -8,7 +10,6 @@ allprojects {
 
         // Library Repository
         libraryName = "FlexibleAdapter"
-        bintrayRepo = "maven"
         packageExt = "aar"
         siteUrl = "https://github.com/davideas/FlexibleAdapter"
         gitUrl = "https://github.com/davideas/FlexibleAdapter.git"
@@ -89,15 +90,72 @@ allprojects {
         mavenCentral()
         gradlePluginPortal()
         google()
-        maven { url "https://jitpack.io" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url = "https://jitpack.io" }
+        maven { url = "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
+
 
     afterEvaluate { project ->
         if (project.extensions.findByType(JavaPluginExtension)) {
             project.java {
                 toolchain {
                     languageVersion = JavaLanguageVersion.of(17)
+                }
+            }
+        }
+    }
+
+
+}
+
+subprojects {
+    tasks.register('sourcesJar', Jar) {
+        archiveClassifier = 'sources'
+        if (project.plugins.hasPlugin('com.android.library')) {
+            from android.sourceSets.main.java.srcDirs
+        } else {
+            from sourceSets.main.java.srcDirs
+        }
+    }
+
+    afterEvaluate { project ->
+        publishing {
+            publications {
+                release(MavenPublication) {
+                    groupId = project.publishedGroupId
+                    artifactId = project.artifact
+                    version = project.version
+
+                    artifact sourcesJar
+
+                    pom {
+                        name = project.libraryName
+                        packaging = project.packageExt
+                        description = project.libraryDescription
+                        url = project.siteUrl
+
+                        scm {
+                            connection = project.gitUrl
+                            developerConnection = project.gitUrl
+                            url = project.siteUrl
+                        }
+
+                        licenses {
+                            license {
+                                name = project.licenseName
+                                url = project.licenseUrl
+                                distribution = project.licenseDist
+                            }
+                        }
+
+                        developers {
+                            developer {
+                                id = project.developerId
+                                name = project.developerName
+                                email = project.developerEmail
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -109,7 +167,7 @@ buildscript {
         mavenCentral()
         gradlePluginPortal()
         google()
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url = "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 
     ext {
@@ -121,7 +179,6 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_plugin_version"
-        classpath "com.github.dcendents:android-maven-gradle-plugin:$maven_gradle_plugin_version"
         classpath "de.mannodermaus.gradle.plugins:android-junit5:$android_junit5_version"
         classpath "eu.davidea:grabver:$grabver_version"
         // NOTE: Do not place your application dependencies here; they belong

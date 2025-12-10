@@ -1,13 +1,12 @@
 apply plugin: 'com.android.library'
 apply plugin: 'eu.davidea.grabver'
-apply plugin:  'maven-publish'
 
 versioning {
-    major 1
-    minor 0
-    patch 0
+    major = 1
+    minor = 0
+    patch = 0
     //preRelease "b6"
-    saveOn "install"
+    saveOn = "install"
 }
 // For maven repository
 version = versioning.name
@@ -19,12 +18,11 @@ ext {
     libraryLabels = ['android', 'flexibleadapter', 'adapter', 'ui']
 
     publishedGroupId = "eu.davidea"
-    bintrayName = "flexible-adapter-ui"
-    artifact = bintrayName
+    artifact = "flexible-adapter-ui"
 }
 
 android {
-    namespace "eu.davidea.flexibleadapter.helpers"
+    namespace = "eu.davidea.flexibleadapter.helpers"
     compileSdkVersion rootProject.ext.targetSdk
 
     defaultConfig {
@@ -44,19 +42,14 @@ dependencies {
     implementation google.material
 }
 
-if (project.hasProperty('all') || project.hasProperty('ui')) {
-    apply from: '../maven-install.gradle'
-}
+publishing {
+    publications {
+        release(MavenPublication) {
+            artifactId = 'flexible-adapter-ui'
+            version = '1.0.0'
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.findByName("release")
-                groupId = 'eu.davidea'
-                artifactId = 'flexible-adapter-ui'
-                version = '1.0.0'
+            afterEvaluate {
+                from components.findByName('release')
             }
         }
     }
